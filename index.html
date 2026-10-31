@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Sonntagsbrunch Christmas Edition: jede bringt was mit. Welcher Adventssonntag passt?">
+<meta name="theme-color" content="#ef5a4c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ef5a4c'/%3E%3Cpath d='M32 12 48 50H16z' fill='%23238f7f'/%3E%3Cpath d='M32 5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L32 18.4l-5.2 2.7 1-5.8-4.3-4.1 5.9-.8z' fill='%23f4c542'/%3E%3C/svg%3E">
+<title>Christmas Brunch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Gabarito:wght@400;600;800&family=Caveat:wght@600&display=swap">
+<style>
+/* Layout: wrapping-paper sections stacked like a gift. HO-HO type hero with a garland, a forest band, then the date grid and the potluck list. */
+:root {
+  --coral: #ef5a4c;
+  --red: #d42a22;
+  --pink: #f6a2c0;
+  --blush: #fbd3e0;
+  --green: #2c6b4c;
+  --teal: #238f7f;
+  --mint: #6cbf9f;
+  --gold: #f4c542;
+  --cream: #f8ecd9;
+  --ink: #2b1a22;
+
+  --display: "Bagel Fat One", "Arial Rounded MT Bold", "Arial Black", sans-serif;
+  --body: "Gabarito", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --hand: "Caveat", "Bradley Hand", "Segoe Print", cursive;
+  color-scheme: light;
+}
+* { box-sizing: border-box }
+[hidden] { display: none !important }
+html { background: var(--coral) }
+body {
+  margin: 0;
+  background: var(--coral);
+  color: var(--ink);
+  font: 400 17px/1.5 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: max(16px, env(safe-area-inset-top, 0px)) max(48px, env(safe-area-inset-bottom, 0px));
+}
+.wrap { max-width: 1080px; margin: 0 auto; display: grid; gap: 20px }
+h1, h2 { font-family: var(--display); font-weight: 400; margin: 0; text-wrap: balance; letter-spacing: .01em }
+button:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px }
+
+/* ---------- hero ---------- */
+.hero {
+  position: relative; overflow: hidden;
+  border-radius: 22px;
+  background: var(--red);
+  min-height: 460px;
+  display: grid; align-items: end;
+  padding: clamp(18px, 4vw, 40px);
+}
+.hoho {
+  position: absolute; inset: -6% -10% auto -6%;
+  font: 400 clamp(120px, 24vw, 280px)/.8 var(--display);
+  color: var(--pink);
+  transform: rotate(-7deg);
+  white-space: nowrap;
+  pointer-events: none; user-select: none;
+}
+.hoho span { display: block }
+.hoho span:nth-child(2) { margin-left: 18% }
+.garland { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none }
+.hero-card {
+  position: relative;
+  background: var(--cream);
+  border-radius: 18px;
+  padding: 22px clamp(18px, 3vw, 30px) 24px;
+  max-width: 560px;
+  box-shadow: 8px 8px 0 var(--green);
+  display: grid; gap: 10px;
+}
+.kicker { font: 600 26px/1 var(--hand); color: var(--red); transform: rotate(-2deg); transform-origin: left }
+h1 { font-size: clamp(42px, 7vw, 74px); line-height: .92; color: var(--green) }
+h1 em { font-style: normal; color: var(--red); display: block }
+.hero-card p { margin: 0; font-size: 18px; font-weight: 600; max-width: 40ch }
+
+/* ---------- facts ---------- */
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px }
+.fact {
+  background: var(--cream); border-radius: 16px; padding: 16px 18px 18px;
+  display: grid; gap: 4px; align-content: start; min-width: 0;
+}
+.fact:nth-child(1) { background: var(--pink) }
+.fact:nth-child(2) { background: var(--gold) }
+.fact:nth-child(3) { background: var(--mint) }
+.label { font: 800 12px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--ink); opacity: .75 }
+.fact strong { font: 400 24px/1.1 var(--display); color: var(--ink) }
+.fact span.sub { font-weight: 600; font-size: 15px }
+.fact .row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px }
+.pill {
+  font: 800 13px/1 var(--body); color: var(--ink); background: transparent;
+  border: 2px solid var(--ink); border-radius: 999px; padding: 7px 11px; cursor: pointer; text-decoration: none;
+}
+.pill:hover { background: var(--ink); color: var(--gold) }
+
+/* ---------- forest band ---------- */
+.forest { border-radius: 18px; overflow: hidden; background: var(--cream); line-height: 0 }
+.forest svg { width: 100%; height: 120px; display: block }
+
+/* ---------- sections ---------- */
+.panel { border-radius: 22px; padding: clamp(18px, 3.5vw, 32px); display: grid; gap: 18px }
+.panel-head { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: end; justify-content: space-between }
+.panel-head p { margin: 4px 0 0; max-width: 54ch; font-weight: 600 }
+h2 { font-size: clamp(32px, 5vw, 48px); line-height: 1 }
+.status { font: 800 12px/1.3 var(--body); letter-spacing: .06em; padding: 8px 12px; border-radius: 999px; background: var(--ink); color: var(--mint); max-width: 40ch }
+.status[data-mode="error"], .status[data-mode="offline"], .status[data-mode="setup"] { color: var(--pink) }
+
+.dates { background: var(--blush) }
+.dates h2 { color: var(--red) }
+.best {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+  background: var(--green); color: var(--cream);
+  padding: 12px 16px; border-radius: 14px; font-weight: 800; font-size: 18px;
+}
+.best .stamp { font: 400 15px/1 var(--display); background: var(--gold); color: var(--ink); padding: 7px 10px 6px; border-radius: 999px }
+
+.scroller { overflow-x: auto; border-radius: 14px; background: var(--cream); -webkit-overflow-scrolling: touch }
+table { border-collapse: separate; border-spacing: 0; width: 100%; min-width: 640px; font-variant-numeric: tabular-nums }
+th, td { padding: 0; text-align: center; border-bottom: 2px dotted rgba(43, 26, 34, .15) }
+thead th { background: var(--red); color: var(--cream); padding: 12px 6px 10px; vertical-align: bottom; font-weight: 800 }
+thead th .dow { display: block; font: 800 11px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--blush) }
+thead th .dnum { display: block; font: 400 30px/1.05 var(--display); color: var(--cream) }
+thead th .mon { display: block; font: 800 12px/1 var(--body); letter-spacing: .08em; text-transform: uppercase }
+thead th .adv { display: block; font: 600 17px/1 var(--hand); color: var(--gold); margin-bottom: 4px }
+thead th.is-best { background: var(--green) }
+th.name-col, td.name-col { position: sticky; left: 0; z-index: 2; text-align: left; min-width: 130px; padding: 10px 14px }
+thead th.name-col { background: var(--ink); color: var(--pink); font: 800 12px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; vertical-align: middle }
+tbody td.name-col { background: var(--cream); font-weight: 800; font-size: 18px; overflow-wrap: anywhere }
+tbody tr.is-me td.name-col { background: var(--gold) }
+.name-wrap { display: flex; align-items: center; gap: 8px }
+.me-tag { font: 800 10px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; background: var(--ink); color: var(--gold); padding: 4px 6px; border-radius: 999px }
+th.party-col, td.party-col { min-width: 112px; padding: 6px 8px }
+thead th.party-col { background: var(--ink); color: var(--pink); font: 800 12px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; vertical-align: middle }
+.stepper { display: inline-flex; align-items: center; gap: 6px }
+.stepper button {
+  width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--ink); background: transparent;
+  font: 800 18px/1 var(--body); color: var(--ink); cursor: pointer; display: grid; place-items: center; padding: 0;
+}
+.stepper button:hover:not([disabled]) { background: var(--ink); color: var(--cream) }
+.stepper button[disabled] { opacity: .3; cursor: default }
+.stepper output { min-width: 18px; font: 400 20px/1 var(--display) }
+td.is-best-col { background: rgba(44, 107, 76, .1) }
+
+.cell { width: 100%; min-height: 60px; display: grid; place-items: center; border: 0; background: transparent; cursor: pointer; padding: 8px 4px }
+.bauble {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 2.5px dashed rgba(43, 26, 34, .3);
+  display: grid; place-items: center; position: relative;
+  transition: transform .15s ease;
+}
+.cell:hover .bauble { transform: rotate(-10deg) scale(1.06); border-color: var(--ink) }
+.cell[aria-pressed="true"] .bauble { border: 0; background: radial-gradient(circle at 34% 30%, var(--pink) 0 14%, var(--red) 15%) }
+.cell[aria-pressed="true"] .bauble::before {
+  content: ""; position: absolute; top: -6px; left: 50%; width: 12px; height: 7px; margin-left: -6px;
+  background: var(--gold); border-radius: 3px 3px 1px 1px;
+}
+
+tfoot td { background: var(--ink); color: var(--cream); padding: 10px 4px; border-bottom: 0 }
+tfoot td.name-col, tfoot td.party-col { background: var(--ink); color: var(--pink); font: 800 12px/1.2 var(--body); letter-spacing: .1em; text-transform: uppercase }
+tfoot td.party-col { text-align: center }
+.count { font: 400 22px/1 var(--display); color: var(--mint) }
+.count.zero { color: rgba(248, 236, 217, .3) }
+.count small { display: block; font: 800 11px/1.2 var(--body); color: var(--blush); letter-spacing: .04em }
+tfoot td.is-best-col .count { color: var(--gold) }
+
+.empty-row td { padding: 24px 16px; text-align: left; font-weight: 600 }
+
+.join { display: flex; flex-wrap: wrap; gap: 10px; background: var(--ink); padding: 12px; border-radius: 14px }
+.join label { flex-basis: 100%; font: 800 12px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--pink) }
+.join input { flex: 1 1 200px; min-width: 0; font: 700 18px/1 var(--body); color: var(--ink); background: var(--cream); border: 0; border-radius: 10px; padding: 13px 14px }
+.join button {
+  font: 400 17px/1 var(--display); background: var(--gold); color: var(--ink);
+  border: 0; border-radius: 10px; padding: 13px 18px; cursor: pointer;
+}
+
+/* ---------- potluck ---------- */
+.potluck { background: var(--green); color: var(--cream) }
+.potluck h2 { color: var(--gold) }
+.tally { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px }
+.tally div { border-radius: 14px; padding: 12px 14px; color: var(--ink); display: grid; gap: 2px }
+.tally b { font: 400 30px/1 var(--display) }
+.tally span { font-weight: 800; font-size: 14px }
+.t-suess { background: var(--pink) }
+.t-salzig { background: var(--gold) }
+.t-trinken { background: var(--mint) }
+.t-anderes { background: var(--cream) }
+.hint { margin: 0; font: 600 24px/1.2 var(--hand); color: var(--blush) }
+
+.dishes { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px }
+.dish {
+  background: var(--cream); color: var(--ink); border-radius: 14px; padding: 12px 14px;
+  display: grid; grid-template-columns: minmax(90px, 140px) minmax(0, 1fr); gap: 10px 16px; align-items: center;
+}
+.dish.is-me { box-shadow: inset 0 0 0 3px var(--gold) }
+.dish-name { font-weight: 800; font-size: 18px; overflow-wrap: anywhere }
+.dish-fields { display: grid; gap: 8px; min-width: 0 }
+.dish input {
+  width: 100%; font: 600 17px/1.2 var(--body); color: var(--ink);
+  background: var(--blush); border: 0; border-radius: 10px; padding: 11px 12px;
+}
+.dish input::placeholder { color: rgba(43, 26, 34, .45) }
+.cats { display: flex; flex-wrap: wrap; gap: 6px }
+.cats button {
+  font: 800 13px/1 var(--body); padding: 7px 11px; border-radius: 999px; cursor: pointer;
+  border: 2px solid var(--ink); background: transparent; color: var(--ink);
+}
+.cats button[aria-pressed="true"][data-cat="suess"] { background: var(--pink) }
+.cats button[aria-pressed="true"][data-cat="salzig"] { background: var(--gold) }
+.cats button[aria-pressed="true"][data-cat="trinken"] { background: var(--mint) }
+.cats button[aria-pressed="true"][data-cat="anderes"] { background: var(--ink); color: var(--cream) }
+
+footer { text-align: center; font: 600 24px/1.2 var(--hand); color: var(--cream) }
+
+@media (max-width: 760px) {
+  .hero { min-height: 420px }
+  .facts { grid-template-columns: 1fr }
+  .tally { grid-template-columns: repeat(2, minmax(0, 1fr)) }
+  .dish { grid-template-columns: 1fr }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bauble { transition: none }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="hoho" aria-hidden="true"><span>HO HO</span><span>HO HO</span><span>HO HO</span></div>
+    <svg class="garland" viewBox="0 0 1000 460" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M-20 120 C 120 40, 240 220, 360 140 S 560 10, 640 120 S 760 300, 880 180 S 1000 60, 1040 110" fill="none" stroke="#2c6b4c" stroke-width="12" stroke-linecap="round"/>
+      <g stroke="#f8ecd9" stroke-width="3" stroke-linecap="round">
+        <path d="M150 300v26M137 313h26M141 304l18 18M159 304l-18 18"/>
+        <path d="M800 70v22M789 81h22M792 73l16 16M808 73l-16 16"/>
+        <path d="M900 330v30M885 345h30M889 334l22 22M911 334l-22 22"/>
+        <path d="M520 220v18M511 229h18M514 223l12 12M526 223l-12 12"/>
+      </g>
+    </svg>
+    <div class="hero-card">
+      <span class="kicker">Sonntagsbrunch</span>
+      <h1>Christmas <em>Edition</em></h1>
+      <p>Potluck: Jede bringt etwas mit, und wir feiern zusammen die Vorweihnachtszeit.</p>
+    </div>
+  </header>
+
+  <section class="facts" aria-label="Eckdaten">
+    <div class="fact">
+      <span class="label">Wann</span>
+      <strong>Sonntag, 11:00</strong>
+      <span class="sub">Welcher Adventssonntag, entscheiden wir unten.</span>
+    </div>
+    <div class="fact">
+      <span class="label">Wo</span>
+      <strong id="addr">Birmensdorferstrasse 377</strong>
+      <span class="sub">Zürich (Heuried)</span>
+      <div class="row">
+        <a class="pill" href="https://www.google.com/maps/search/?api=1&query=Birmensdorferstrasse+377+Z%C3%BCrich" target="_blank" rel="noopener">Auf der Karte</a>
+        <button class="pill" type="button" id="copy-addr">Adresse kopieren</button>
+      </div>
+    </div>
+    <div class="fact">
+      <span class="label">Mitbringen</span>
+      <strong>Etwas für den Tisch</strong>
+      <span class="sub">Süss, salzig oder zum Trinken. Trag es unten ein, damit nicht alle Zopf bringen.</span>
+    </div>
+  </section>
+
+  <div class="forest" aria-hidden="true">
+    <svg viewBox="0 0 1080 120" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <pattern id="trees" width="135" height="120" patternUnits="userSpaceOnUse">
+          <path d="M22 18 42 92H2z" fill="#238f7f"/><rect x="20" y="92" width="4" height="10" fill="#2b1a22"/>
+          <path d="M67 18 87 92H47z" fill="#6cbf9f"/><rect x="65" y="92" width="4" height="10" fill="#2b1a22"/>
+          <path d="M112 18 132 92H92z" fill="#2c6b4c"/><rect x="110" y="92" width="4" height="10" fill="#2b1a22"/>
+        </pattern>
+      </defs>
+      <rect width="1080" height="120" fill="url(#trees)"/>
+      <rect x="518" y="0" width="54" height="120" fill="#f8ecd9"/>
+      <g transform="rotate(-28 545 70)">
+        <path d="M545 22 568 98H522z" fill="#238f7f"/><rect x="543" y="98" width="4" height="10" fill="#2b1a22"/>
+        <path d="M545 6l3 6.2 6.8.9-5 4.7 1.2 6.7-6-3.2-6 3.2 1.2-6.7-5-4.7 6.8-.9z" fill="#f4c542"/>
+      </g>
+    </svg>
+  </div>
+
+  <main class="panel dates">
+    <div class="panel-head">
+      <div>
+        <h2>Welcher Sonntag?</h2>
+        <p>Tipp in deiner Zeile alle Sonntage an, die dir passen. Bei «Personen» stellst du ein, wie viele ihr seid, also mit oder ohne Familie.</p>
+      </div>
+      <div class="status" id="status" data-mode="loading">Liste wird geladen …</div>
+    </div>
+
+    <div class="best" id="best" hidden></div>
+
+    <div class="scroller">
+      <table id="grid">
+        <thead></thead>
+        <tbody></tbody>
+        <tfoot></tfoot>
+      </table>
+    </div>
+
+    <form class="join" id="join" autocomplete="off">
+      <label for="join-name">Fehlt jemand?</label>
+      <input id="join-name" name="name" maxlength="40" placeholder="Name" required>
+      <button type="submit">Zeile hinzufügen</button>
+    </form>
+  </main>
+
+  <section class="panel potluck" aria-labelledby="potluck-title">
+    <div class="panel-head">
+      <div>
+        <h2 id="potluck-title">Wer bringt was?</h2>
+        <p>Schreib rein, was du mitbringst, und wähl die Sorte. So sehen alle, was auf dem Tisch noch fehlt.</p>
+      </div>
+    </div>
+    <div class="tally" id="tally"></div>
+    <p class="hint" id="hint"></p>
+    <ul class="dishes" id="dishes"></ul>
+  </section>
+
+  <footer>Fa la la la la … bis bald!</footer>
+</div>
+
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.3/dist/umd/supabase.js"></script>
+<script>
+(() => {
+  // The four Advent Sundays 2026.
+  const SUNDAYS = [
+    { key: '2026-11-29', day: 29, month: 10, adv: '1. Advent' },
+    { key: '2026-12-06', day: 6, month: 11, adv: '2. Advent' },
+    { key: '2026-12-13', day: 13, month: 11, adv: '3. Advent' },
+    { key: '2026-12-20', day: 20, month: 11, adv: '4. Advent' },
+  ]
+  const MONTHS = ['Jan', 'Feb', 'März', 'Apr', 'Mai', 'Juni', 'Juli', 'Aug', 'Sept', 'Okt', 'Nov', 'Dez']
+  const MONTHS_LONG = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
+  const CATS = [
+    { key: 'suess', label: 'Süsses' },
+    { key: 'salzig', label: 'Salziges' },
+    { key: 'trinken', label: 'Getränke' },
+    { key: 'anderes', label: 'Anderes' },
+  ]
+  const ME_KEY = 'christmas-brunch-me'
+
+  const pad = (n) => String(n).padStart(2, '0')
+  const now = new Date()
+  const today = now.getFullYear() + '-' + pad(now.getMonth() + 1) + '-' + pad(now.getDate())
+  const DAYS = SUNDAYS.filter((s) => s.key >= today)
+
+  const store = {
+    get(k) {
+      try { return localStorage.getItem(k) } catch (e) { return null }
+    },
+    set(k, v) {
+      try { localStorage.setItem(k, v) } catch (e) { /* storage blocked: keep in memory */ }
+    },
+  }
+
+  const state = { people: [], loaded: false, me: store.get(ME_KEY) }
+  const $ = (id) => document.getElementById(id)
+  const grid = $('grid')
+
+  function setMe(id) {
+    if (state.me !== id) {
+      state.me = id
+      store.set(ME_KEY, id)
+    }
+  }
+
+  function el(tag, props, children) {
+    const n = document.createElement(tag)
+    Object.assign(n, props || {})
+    ;(children || []).forEach((c) => n.appendChild(typeof c === 'string' ? document.createTextNode(c) : c))
+    return n
+  }
+
+  // ---------- date grid ----------
+  function bestDay() {
+    let best = null
+    DAYS.forEach((d) => {
+      const yes = state.people.filter((p) => p.days.includes(d.key))
+      const heads = yes.reduce((s, p) => s + p.party, 0)
+      if (!best || yes.length > best.yes || (yes.length === best.yes && heads > best.heads)) {
+        best = { d, yes: yes.length, heads }
+      }
+    })
+    return best && best.yes > 0 ? best : null
+  }
+
+  function renderGrid() {
+    const all = state.people
+    const best = bestDay()
+    const isBest = (k) => !!best && best.d.key === k
+
+    grid.tHead.innerHTML = '<tr><th class="name-col" scope="col">Wer</th><th class="party-col" scope="col">Personen</th>' +
+      DAYS.map((d) => '<th scope="col" class="' + (isBest(d.key) ? 'is-best' : '') + '"><span class="adv">' + d.adv +
+        '</span><span class="dow">So</span><span class="dnum">' + d.day + '.</span><span class="mon">' + MONTHS[d.month] + '</span></th>').join('') +
+      '</tr>'
+
+    const body = grid.tBodies[0]
+    body.innerHTML = ''
+    if (!all.length) {
+      const td = el('td', { colSpan: DAYS.length + 2 }, [state.loaded ? 'Noch niemand eingetragen. Unten deinen Namen eintragen.' : 'Die Liste wird geladen …'])
+      body.appendChild(el('tr', { className: 'empty-row' }, [td]))
+    }
+    all.forEach((p) => {
+      const mine = state.me === p.id
+      const tr = el('tr', { className: mine ? 'is-me' : '' })
+      const name = el('div', { className: 'name-wrap' }, [el('span', { textContent: p.name })])
+      if (mine) { name.appendChild(el('span', { className: 'me-tag', textContent: 'du' })) }
+      tr.appendChild(el('td', { className: 'name-col' }, [name]))
+
+      const minus = el('button', { type: 'button', textContent: '−', disabled: p.party <= 1 })
+      minus.setAttribute('aria-label', 'Eine Person weniger bei ' + p.name)
+      minus.addEventListener('click', () => changeParty(p.id, -1))
+      const plus = el('button', { type: 'button', textContent: '+', disabled: p.party >= 10 })
+      plus.setAttribute('aria-label', 'Eine Person mehr bei ' + p.name)
+      plus.addEventListener('click', () => changeParty(p.id, 1))
+      const out = el('output', { textContent: String(p.party) })
+      out.setAttribute('aria-label', p.name + ': ' + p.party + (p.party === 1 ? ' Person' : ' Personen'))
+      tr.appendChild(el('td', { className: 'party-col' }, [el('span', { className: 'stepper' }, [minus, out, plus])]))
+
+      DAYS.forEach((d) => {
+        const on = p.days.includes(d.key)
+        const b = el('button', { type: 'button', className: 'cell', innerHTML: '<span class="bauble"></span>' })
+        b.setAttribute('aria-pressed', String(on))
+        b.setAttribute('aria-label', p.name + ', Sonntag ' + d.day + '. ' + MONTHS_LONG[d.month] + (on ? ': passt' : ': passt nicht'))
+        b.addEventListener('click', () => toggleDay(p.id, d.key))
+        tr.appendChild(el('td', { className: isBest(d.key) ? 'is-best-col' : '' }, [b]))
+      })
+      body.appendChild(tr)
+    })
+
+    const totalHeads = all.reduce((s, p) => s + p.party, 0)
+    grid.tFoot.innerHTML = '<tr><td class="name-col">Zusagen</td><td class="party-col">' + totalHeads + ' total</td>' +
+      DAYS.map((d) => {
+        const yes = all.filter((p) => p.days.includes(d.key))
+        const heads = yes.reduce((s, p) => s + p.party, 0)
+        return '<td class="' + (isBest(d.key) ? 'is-best-col' : '') + '"><span class="count' + (yes.length ? '' : ' zero') + '">' + yes.length +
+          (yes.length ? '<small>' + heads + ' Pers.</small>' : '') + '</span></td>'
+      }).join('') + '</tr>'
+
+    const banner = $('best')
+    if (best && all.length > 1) {
+      banner.hidden = false
+      banner.innerHTML = '<span class="stamp">Favorit</span>'
+      banner.appendChild(el('span', {
+        textContent: best.d.adv + ', ' + best.d.day + '. ' + MONTHS_LONG[best.d.month] + ' · ' + best.yes + ' von ' + all.length + ' können, ' + best.heads + ' Personen',
+      }))
+    } else {
+      banner.hidden = true
+    }
+  }
+
+  // ---------- potluck ----------
+  let potluckPending = false
+  function renderPotluck() {
+    const box = $('dishes')
+    if (box.contains(document.activeElement) && document.activeElement.tagName === 'INPUT') {
+      potluckPending = true
+      renderTally()
+      return
+    }
+    potluckPending = false
+    box.innerHTML = ''
+    state.people.forEach((p) => {
+      const input = el('input', { type: 'text', maxLength: 80, value: p.brings, placeholder: 'z. B. Zimtschnecken, Lachs-Bagels, Punsch …', id: 'brings-' + p.id })
+      input.setAttribute('aria-label', 'Was bringt ' + p.name + ' mit?')
+      input.addEventListener('input', () => changeBrings(p.id, input.value))
+      input.addEventListener('blur', () => flushBrings(p.id))
+      const cats = el('div', { className: 'cats' })
+      cats.setAttribute('role', 'group')
+      cats.setAttribute('aria-label', 'Sorte für ' + p.name)
+      CATS.forEach((c) => {
+        const b = el('button', { type: 'button', textContent: c.label })
+        b.dataset.cat = c.key
+        b.setAttribute('aria-pressed', String(p.category === c.key))
+        b.addEventListener('click', () => changeCategory(p.id, c.key))
+        cats.appendChild(b)
+      })
+      const li = el('li', { className: 'dish' + (state.me === p.id ? ' is-me' : '') }, [
+        el('span', { className: 'dish-name', textContent: p.name }),
+        el('div', { className: 'dish-fields' }, [input, cats]),
+      ])
+      box.appendChild(li)
+    })
+    renderTally()
+  }
+
+  function renderTally() {
+    const counts = {}
+    CATS.forEach((c) => { counts[c.key] = 0 })
+    state.people.forEach((p) => { if (p.category && p.category in counts) { counts[p.category]++ } })
+    $('tally').innerHTML = CATS.map((c) => '<div class="t-' + c.key + '"><b>' + counts[c.key] + '</b><span>' + c.label + '</span></div>').join('')
+    const open = state.people.filter((p) => !p.category).length
+    const missing = CATS.slice(0, 3).filter((c) => counts[c.key] === 0).map((c) => c.label)
+    let hint = ''
+    if (state.people.length && missing.length && open) {
+      hint = 'Noch niemand bringt ' + missing.join(' oder ') + '.'
+    } else if (state.people.length && !open) {
+      hint = 'Der Tisch ist komplett. Yay!'
+    }
+    $('hint').textContent = hint
+  }
+  document.addEventListener('focusout', () => {
+    setTimeout(() => { if (potluckPending) { renderPotluck() } }, 0)
+  })
+
+  function render() {
+    renderGrid()
+    renderPotluck()
+  }
+
+  function setStatus(mode) {
+    const s = $('status')
+    s.dataset.mode = mode
+    s.textContent = {
+      live: 'Live · alle sehen dieselbe Liste',
+      error: 'Speichern hat gerade nicht geklappt. Lade die Seite neu und versuch es nochmal.',
+      offline: 'Die Liste ist gerade nicht erreichbar. Versuch es in ein paar Minuten nochmal.',
+      setup: 'Datenbank ist noch nicht verbunden.',
+    }[mode] || ''
+  }
+
+  $('copy-addr').addEventListener('click', (ev) => {
+    const btn = ev.currentTarget
+    const done = () => {
+      btn.textContent = 'Kopiert'
+      setTimeout(() => { btn.textContent = 'Adresse kopieren' }, 1800)
+    }
+    navigator.clipboard.writeText('Birmensdorferstrasse 377, Zürich (Heuried)').then(done, () => {
+      const range = document.createRange()
+      range.selectNodeContents($('addr'))
+      const sel = window.getSelection()
+      sel.removeAllRanges()
+      sel.addRange(range)
+    })
+  })
+
+  const cfg = window.BRUNCH_CONFIG || {}
+  if (!cfg.supabaseUrl || !cfg.supabaseKey || !window.supabase) {
+    state.loaded = true
+    setStatus('setup')
+    render()
+    $('join').hidden = true
+    return
+  }
+  const sb = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseKey, {
+    auth: { persistSession: false, autoRefreshToken: false },
+  })
+  const TABLE = 'brunch_people'
+  const COLS = 'id, name, days, party, brings, category, created_at'
+
+  // Rows with unsaved or in-flight edits keep their local values when a reload lands.
+  const dirty = {}
+  const inflight = {}
+
+  const rowFrom = (r) => ({
+    id: r.id,
+    name: String(r.name || ''),
+    days: (r.days || []).slice(),
+    party: Number(r.party) || 1,
+    brings: String(r.brings || ''),
+    category: r.category || null,
+  })
+
+  async function load() {
+    const { data, error } = await sb.from(TABLE).select(COLS).order('created_at')
+    if (error) {
+      setStatus('offline')
+      return
+    }
+    const local = {}
+    state.people.forEach((p) => { local[p.id] = p })
+    state.people = data.map((r) => (dirty[r.id] || inflight[r.id]) && local[r.id] ? local[r.id] : rowFrom(r))
+    state.loaded = true
+    setStatus('live')
+    render()
+  }
+
+  let loadTimer = null
+  function scheduleLoad() {
+    clearTimeout(loadTimer)
+    loadTimer = setTimeout(load, 300)
+  }
+
+  async function save(id) {
+    if (inflight[id]) { inflight[id].again = true; return }
+    inflight[id] = { again: false }
+    try {
+      do {
+        inflight[id].again = false
+        delete dirty[id]
+        const p = state.people.find((x) => x.id === id)
+        if (!p) { break }
+        const { error } = await sb.from(TABLE).update({
+          days: p.days.slice(),
+          party: p.party,
+          brings: p.brings.trim(),
+          category: p.category,
+          updated_at: new Date().toISOString(),
+        }).eq('id', id)
+        if (error) { throw error }
+      } while (inflight[id].again)
+    } catch (e) {
+      setStatus('error')
+    } finally {
+      delete inflight[id]
+    }
+  }
+
+  function edit(id, fn, opts) {
+    const p = state.people.find((x) => x.id === id)
+    if (!p) { return }
+    fn(p)
+    setMe(id)
+    if (!opts || !opts.quiet) { render() }
+  }
+
+  function toggleDay(id, key) {
+    edit(id, (p) => {
+      const s = new Set(p.days)
+      if (s.has(key)) { s.delete(key) } else { s.add(key) }
+      p.days = Array.from(s).sort()
+    })
+    save(id)
+  }
+
+  function changeParty(id, delta) {
+    edit(id, (p) => { p.party = Math.min(10, Math.max(1, p.party + delta)) })
+    save(id)
+  }
+
+  function changeCategory(id, cat) {
+    edit(id, (p) => { p.category = p.category === cat ? null : cat })
+    save(id)
+  }
+
+  const typing = {}
+  function changeBrings(id, value) {
+    edit(id, (p) => { p.brings = value.slice(0, 80) }, { quiet: true })
+    dirty[id] = true
+    clearTimeout(typing[id])
+    typing[id] = setTimeout(() => flushBrings(id), 700)
+  }
+  function flushBrings(id) {
+    clearTimeout(typing[id])
+    if (dirty[id]) { save(id) }
+  }
+
+  $('join').addEventListener('submit', async (ev) => {
+    ev.preventDefault()
+    const input = $('join-name')
+    const name = input.value.trim().slice(0, 40)
+    if (!name) { return }
+    const btn = $('join').querySelector('button')
+    btn.disabled = true
+    const { data, error } = await sb.from(TABLE).insert({ name }).select(COLS).single()
+    btn.disabled = false
+    if (error) {
+      setStatus('error')
+      return
+    }
+    input.value = ''
+    setMe(data.id)
+    if (!state.people.some((p) => p.id === data.id)) { state.people.push(rowFrom(data)) }
+    render()
+  })
+
+  render()
+  load()
+  sb.channel('brunch-changes')
+    .on('postgres_changes', { event: '*', schema: 'public', table: TABLE }, scheduleLoad)
+    .subscribe()
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) { load() } })
+  setInterval(() => { if (!document.hidden) { load() } }, 30000)
+})()
+</script>
+</body>
+</html>
